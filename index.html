@@ -4,22 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crop Compensation Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Crop Compensation Calculator</h1>
+        <div class="language-switcher">
+            <button onclick="switchLanguage('english')" class="lang-btn" id="en-btn">English</button>
+            <button onclick="switchLanguage('marathi')" class="lang-btn" id="mr-btn">मराठी</button>
+        </div>
+        <h1><i class="fas fa-calculator"></i> <span class="translate" data-key="title">Crop Compensation Calculator</span></h1>
         
         <div class="operation-selector">
-            <h2>Select Operation:</h2>
+            <h2><i class="fas fa-tasks"></i> <span class="translate" data-key="selectOperation">Select Operation:</span></h2>
             <select id="operation">
-                <option value="1">Calculate Crop Loss in Rs.</option>
-                <option value="2">Calculate Area undergone in loss</option>
+                <option value="1">💰 <span class="translate" data-key="operation1">Calculate Crop Loss in Rs.</span></option>
+                <option value="2">📏 <span class="translate" data-key="operation2">Calculate Area undergone in loss</span></option>
             </select>
         </div>
 
         <div class="crop-selector">
-            <h2>Select Crop:</h2>
+            <h2><i class="fas fa-seedling"></i> <span class="translate" data-key="selectCrop">Select Crop:</span></h2>
             <select id="cropSelect"></select>
         </div>
 
@@ -27,10 +33,13 @@
             <!-- This will be dynamically updated based on operation -->
         </div>
 
-        <button onclick="calculate()" class="calculate-btn">Calculate</button>
+        <button onclick="calculate()" class="calculate-btn">
+            <i class="fas fa-calculator"></i> <span class="translate" data-key="calculateButton">Calculate</span>
+        </button>
 
         <div id="result" class="result"></div>
     </div>
+    <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

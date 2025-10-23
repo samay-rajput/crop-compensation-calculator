@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "compile and run (input/output files)",
+            "type": "shell",
+            // This command compiles the current Java file and, if successful (&&), 
+            // runs the compiled class.
+            // < input.txt redirects standard input from the file.
+            // > output.txt redirects standard output to the file.
+            "command": "javac ${file} && java ${fileBasenameNoExtension} < input.txt > output.txt",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": ["$javac"]
+        }
+    ]
+}

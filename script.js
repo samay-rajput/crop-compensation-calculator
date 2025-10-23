@@ -19,19 +19,45 @@ const crops = {
     "halad": [13025, 0]
 };
 
-// Initialize the page when it loads
-window.onload = function() {
-    // Populate crop select dropdown
+let currentLanguage = 'english';
+
+function switchLanguage(language) {
+    currentLanguage = language;
+    document.body.style.fontFamily = language === 'marathi' ? "'Noto Sans Devanagari', sans-serif" : "'Noto Sans', sans-serif";
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.getElementById(language === 'english' ? 'en-btn' : 'mr-btn').classList.add('active');
+    updateTranslations();
+    updateCropSelect();
+    updateInputArea();
+}
+
+function updateTranslations() {
+    document.querySelectorAll('.translate').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (key && translations[currentLanguage][key]) {
+            element.textContent = translations[currentLanguage][key];
+        }
+    });
+}
+
+function updateCropSelect() {
     const cropSelect = document.getElementById('cropSelect');
+    cropSelect.innerHTML = '';
     Object.keys(crops).forEach((crop, index) => {
         const option = document.createElement('option');
         option.value = crop;
-        option.textContent = `${index + 1}. ${crop}`;
+        option.textContent = `${index + 1}. ${translations[currentLanguage].crops[crop]}`;
         cropSelect.appendChild(option);
     });
+}
 
+// Initialize the page when it loads
+window.onload = function() {
     // Set up operation change listener
     document.getElementById('operation').addEventListener('change', updateInputArea);
+    switchLanguage('english'); // Initialize with English
     updateInputArea(); // Initialize input area
 };
 
@@ -41,15 +67,22 @@ function updateInputArea() {
     
     if (operation === "1") {
         inputArea.innerHTML = `
-            <h2>Enter Area:</h2>
-            <input type="number" id="areaInput" placeholder="Area in sq.m" step="any">
+            <h2><i class="fas fa-ruler-combined"></i> <span class="translate" data-key="enterArea">${translations[currentLanguage].enterArea}</span></h2>
+            <div class="input-group">
+                <input type="number" id="areaInput" placeholder="${translations[currentLanguage].areaPlaceholder}" step="any">
+                <span class="unit">${currentLanguage === 'english' ? 'sq.m' : 'चौ.मी'}</span>
+            </div>
         `;
     } else {
         inputArea.innerHTML = `
-            <h2>Enter Cost:</h2>
-            <input type="number" id="costInput" placeholder="Cost of land undergone loss" step="any">
+            <h2><i class="fas fa-rupee-sign"></i> <span class="translate" data-key="enterCost">${translations[currentLanguage].enterCost}</span></h2>
+            <div class="input-group">
+                <input type="number" id="costInput" placeholder="${translations[currentLanguage].costPlaceholder}" step="any">
+                <span class="unit">₹</span>
+            </div>
         `;
     }
+    updateTranslations();
 }
 
 function calculate() {
@@ -67,26 +100,28 @@ function calculate() {
         // Calculate crop loss in Rs
         const area = parseFloat(document.getElementById('areaInput').value);
         if (isNaN(area)) {
-            alert("Please enter a valid area");
+            alert(currentLanguage === 'english' ? "Please enter a valid area" : "कृपया योग्य क्षेत्रफळ टाका");
             return;
         }
         
         // Convert area from sq.m to hectares
         const areaInHectares = area / 10000;
         result = rate * yieldPerHectare * areaInHectares;
-        resultDiv.textContent = `The loss amount is: Rs ${result.toFixed(2)}`;
+        resultDiv.textContent = translations[currentLanguage].lossAmount + result.toFixed(2);
         
     } else {
         // Calculate area undergone in loss
         const cost = parseFloat(document.getElementById('costInput').value);
         if (isNaN(cost)) {
-            alert("Please enter a valid cost");
+            alert(currentLanguage === 'english' ? "Please enter a valid cost" : "कृपया योग्य किंमत टाका");
             return;
         }
         
         result = (cost / (yieldPerHectare * rate)) * 10000; // Convert to sq.meters
-        resultDiv.textContent = `The area undergone loss is: ${result.toFixed(2)} sq.meter`;
+        resultDiv.textContent = translations[currentLanguage].areaLoss + result.toFixed(2) + " " + 
+            (currentLanguage === 'english' ? translations[currentLanguage].sqMeter : "चौ.मी");
     }
+    resultDiv.classList.add('show');
     
     resultDiv.classList.add('show');
 }
