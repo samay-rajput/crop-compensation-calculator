@@ -112,6 +112,7 @@ function calculate() {
     const operation = document.getElementById('operation').value;
     const selectedCrop = document.getElementById('cropSelect').value;
     const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = ''; // Clear previous results
     
     // Get crop data
     const rate = crops[selectedCrop][0];
@@ -130,7 +131,9 @@ function calculate() {
         // Convert area from sq.m to hectares
         const areaInHectares = area / 10000;
         result = rate * yieldPerHectare * areaInHectares;
-        resultDiv.textContent = translations[currentLanguage].lossAmount + result.toFixed(2);
+        const resultText = document.createElement('div');
+        resultText.textContent = translations[currentLanguage].lossAmount + result.toFixed(2);
+        resultDiv.appendChild(resultText);
         
     } else {
         // Calculate area undergone in loss
@@ -141,8 +144,14 @@ function calculate() {
         }
         
         result = (cost / (yieldPerHectare * rate)) * 10000; // Convert to sq.meters
-        resultDiv.textContent = translations[currentLanguage].areaLoss + result.toFixed(2) + " " + 
-            (currentLanguage === 'english' ? translations[currentLanguage].sqMeter : "चौ.मी");
+        const basicResult = document.createElement('div');
+        basicResult.className = 'basic-result';
+        basicResult.textContent = translations[currentLanguage].areaLoss;
+        resultDiv.appendChild(basicResult);
+        
+        // Add area conversions
+        const areaConversions = formatAreaResult(result);
+        resultDiv.appendChild(areaConversions);
     }
     resultDiv.classList.add('show');
     

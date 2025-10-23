@@ -13,6 +13,10 @@ const translations = {
         lossAmount: 'The loss amount is: Rs ',
         areaLoss: 'The area undergone loss is: ',
         sqMeter: 'sq.meter',
+        hectare: 'hectares',
+        aar: 'aar',
+        sqFeet: 'sq.feet',
+        areaConversion: 'Area in different units:',
         crops: {
             "uss": "Sugarcane",
             "maka": "Corn",
@@ -47,6 +51,10 @@ const translations = {
         lossAmount: 'नुकसान भरपाई रक्कम: रु ',
         areaLoss: 'नुकसान झालेले क्षेत्रफळ: ',
         sqMeter: 'चौ.मी',
+        hectare: 'हेक्टर',
+        aar: 'आर',
+        sqFeet: 'चौ.फूट',
+        areaConversion: 'विविध एककांमध्ये क्षेत्रफळ:',
         crops: {
             "uss": "ऊस",
             "maka": "मका",
