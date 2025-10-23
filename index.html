@@ -3,13 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crop Compensation Calculator</title>
+    <title>भाषा निवडा | Select Language</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="language-selection" id="languageSelector">
+        <h1 class="welcome-text">भाषा निवडा<br>Select Language</h1>
+        <div class="language-buttons">
+            <button onclick="selectLanguage('english')" class="lang-select-btn" id="en-select">
+                <i class="fas fa-globe"></i>
+                <span>English</span>
+            </button>
+            <button onclick="selectLanguage('marathi')" class="lang-select-btn" id="mr-select">
+                <i class="fas fa-globe"></i>
+                <span>मराठी</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container" id="calculatorContainer" style="display: none;">
         <div class="language-switcher">
             <button onclick="switchLanguage('english')" class="lang-btn" id="en-btn">English</button>
             <button onclick="switchLanguage('marathi')" class="lang-btn" id="mr-btn">मराठी</button>

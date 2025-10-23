@@ -19,15 +19,38 @@ const crops = {
     "halad": [13025, 0]
 };
 
-let currentLanguage = 'english';
+let currentLanguage = '';
 
-function switchLanguage(language) {
+function selectLanguage(language) {
     currentLanguage = language;
+    document.getElementById('languageSelector').style.display = 'none';
+    const calculator = document.getElementById('calculatorContainer');
+    calculator.style.display = 'block';
+    setTimeout(() => calculator.classList.add('show'), 100);
+    
     document.body.style.fontFamily = language === 'marathi' ? "'Noto Sans Devanagari', sans-serif" : "'Noto Sans', sans-serif";
+    document.title = language === 'marathi' ? 'पीक नुकसान भरपाई कॅल्क्युलेटर' : 'Crop Compensation Calculator';
+    
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     document.getElementById(language === 'english' ? 'en-btn' : 'mr-btn').classList.add('active');
+    
+    updateTranslations();
+    updateCropSelect();
+    updateInputArea();
+}
+
+function switchLanguage(language) {
+    currentLanguage = language;
+    document.body.style.fontFamily = language === 'marathi' ? "'Noto Sans Devanagari', sans-serif" : "'Noto Sans', sans-serif";
+    document.title = language === 'marathi' ? 'पीक नुकसान भरपाई कॅल्क्युलेटर' : 'Crop Compensation Calculator';
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.getElementById(language === 'english' ? 'en-btn' : 'mr-btn').classList.add('active');
+    
     updateTranslations();
     updateCropSelect();
     updateInputArea();
