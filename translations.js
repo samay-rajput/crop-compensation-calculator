@@ -42,7 +42,7 @@ const translations = {
         enterArea: 'क्षेत्रफळ टाका:',
         enterCost: 'किंमत टाका:',
         areaPlaceholder: 'क्षेत्रफळ (चौ.मी)',
-        costPlaceholder: 'नुकसान झालेल्या जमिनीची किंमत',
+        costPlaceholder: 'नुकसान झालेल्या पिकाची किंमत',
         calculateButton: 'मोजा',
         lossAmount: 'नुकसान भरपाई रक्कम: रु ',
         areaLoss: 'नुकसान झालेले क्षेत्रफळ: ',
