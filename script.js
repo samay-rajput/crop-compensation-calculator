@@ -31,25 +31,8 @@ function selectLanguage(language) {
     document.body.style.fontFamily = language === 'marathi' ? "'Noto Sans Devanagari', sans-serif" : "'Noto Sans', sans-serif";
     document.title = language === 'marathi' ? 'पीक नुकसान भरपाई कॅल्क्युलेटर' : 'Crop Compensation Calculator';
     
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    document.getElementById(language === 'english' ? 'en-btn' : 'mr-btn').classList.add('active');
-    
-    updateTranslations();
-    updateCropSelect();
-    updateInputArea();
-}
-
-function switchLanguage(language) {
-    currentLanguage = language;
-    document.body.style.fontFamily = language === 'marathi' ? "'Noto Sans Devanagari', sans-serif" : "'Noto Sans', sans-serif";
-    document.title = language === 'marathi' ? 'पीक नुकसान भरपाई कॅल्क्युलेटर' : 'Crop Compensation Calculator';
-    
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    document.getElementById(language === 'english' ? 'en-btn' : 'mr-btn').classList.add('active');
+    // Set up operation change listener
+    document.getElementById('operation').addEventListener('change', updateInputArea);
     
     updateTranslations();
     updateCropSelect();
@@ -78,10 +61,8 @@ function updateCropSelect() {
 
 // Initialize the page when it loads
 window.onload = function() {
-    // Set up operation change listener
-    document.getElementById('operation').addEventListener('change', updateInputArea);
-    switchLanguage('english'); // Initialize with English
-    updateInputArea(); // Initialize input area
+    // Language selection screen is shown by default
+    // Calculator will initialize when user selects a language
 };
 
 function updateInputArea() {

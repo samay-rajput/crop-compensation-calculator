@@ -8,7 +8,7 @@ const translations = {
         enterArea: 'Enter Area:',
         enterCost: 'Enter Cost:',
         areaPlaceholder: 'Area in sq.m',
-        costPlaceholder: 'Cost of land undergone loss',
+        costPlaceholder: 'Cost of crop undergone loss',
         calculateButton: 'Calculate',
         lossAmount: 'The loss amount is: Rs ',
         areaLoss: 'The area undergone loss is: ',

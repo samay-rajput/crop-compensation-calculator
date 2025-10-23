@@ -61,6 +61,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     padding: 1.5rem;
+    min-height: 120px;
     border: 2px solid var(--primary-color);
     background: white;
     color: var(--primary-color);
@@ -70,6 +71,7 @@ body {
     font-weight: 600;
     transition: all 0.3s ease;
     width: 150px;
+    box-sizing: border-box;
 }
 
 .lang-select-btn i {
@@ -155,12 +157,14 @@ select, input {
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     font-size: 16px;
+    min-height: 44px;
     transition: all 0.3s ease;
     background: white;
     color: #2c3e50;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    box-sizing: border-box;
 }
 
 .input-group {
@@ -230,6 +234,7 @@ select:focus, input:focus {
     display: block;
     width: 100%;
     padding: 15px;
+    min-height: 48px;
     background: linear-gradient(45deg, #1a73e8, #4285f4);
     color: white;
     border: none;
@@ -242,6 +247,7 @@ select:focus, input:focus {
     text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 4px 15px rgba(26,115,232,0.2);
+    box-sizing: border-box;
 }
 
 .calculate-btn:hover {
@@ -330,90 +336,12 @@ select:focus, input:focus {
     text-align: center;
 }
 
-@media (max-width: 480px) {
-    .units-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .unit-box {
-        padding: 10px;
-    }
-
-    .unit-value {
-        font-size: 1.1em;
-    }
-
-    .unit-label {
-        font-size: 0.8em;
-    }
-
-    .conversion-title {
-        font-size: 1.1em;
-    }
-}
-
-/* Media Queries for Responsiveness */
+/* Tablet and small desktop */
 @media (max-width: 768px) {
     body {
         padding: 10px;
     }
-    
-    .container {
-        padding: 20px;
-        margin: 10px auto;
-    }
-    
-    h1 {
-        font-size: 1.8em;
-    }
-    
-    select, input {
-        font-size: 16px;
-        padding: 10px;
-    }
-    
-    .calculate-btn {
-        padding: 12px;
-        font-size: 16px;
-    }
-    
-    .result {
-        font-size: 18px;
-        padding: 15px;
-    }
-}
 
-/* Language switcher styles */
-.language-switcher {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-}
-
-.lang-btn {
-    padding: 8px 15px;
-    border: 2px solid #1a73e8;
-    background: transparent;
-    color: #1a73e8;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.lang-btn:hover {
-    background: rgba(26, 115, 232, 0.1);
-}
-
-.lang-btn.active {
-    background: #1a73e8;
-    color: white;
-}
-
-@media (max-width: 768px) {
     .welcome-text {
         font-size: 1.8em;
     }
@@ -425,66 +353,214 @@ select:focus, input:focus {
 
     .lang-select-btn {
         width: 100%;
-        max-width: 200px;
-    }
-
-    h1 {
-        font-size: 1.8em;
+        max-width: 220px;
     }
     
     .container {
-        width: 90%;
-        padding: 20px;
+        width: 92%;
+        padding: 18px;
         margin: 10px auto;
+    }
+    
+    h1 {
+        font-size: 1.7em;
+    }
+
+    h2 {
+        font-size: 1.15em;
+    }
+    
+    .calculate-btn {
+        padding: 14px;
+        font-size: 17px;
+    }
+    
+    .result {
+        font-size: 18px;
+        padding: 16px;
     }
 }
 
+/* Mobile devices - iPhone 12/13/14, Galaxy S21+ */
 @media (max-width: 480px) {
     .language-selection {
         padding: 1.5rem;
-        width: 85%;
+        width: 90%;
+        max-width: 340px;
     }
 
     .welcome-text {
         font-size: 1.5em;
+        line-height: 1.3;
+    }
+
+    .lang-select-btn {
+        max-width: 180px;
+        padding: 1.2rem;
     }
 
     h1 {
         font-size: 1.4em;
+        margin-bottom: 20px;
     }
     
     h2 {
-        font-size: 1.1em;
+        font-size: 1.05em;
+        margin-bottom: 12px;
     }
     
     .container {
         padding: 15px;
-        margin-top: 60px;
-        width: 85%;
+        width: 92%;
     }
     
     select, input {
-        padding: 8px;
-        font-size: 14px;
+        padding: 10px 12px;
+        font-size: 16px;
+        min-height: 44px;
     }
 
-    .language-switcher {
-        top: 10px;
-        right: 10px;
-    }
-
-    .lang-btn {
-        padding: 6px 12px;
-        font-size: 14px;
+    .operation-selector,
+    .crop-selector {
+        padding: 15px;
+        margin-bottom: 18px;
     }
 
     .calculate-btn {
         font-size: 16px;
-        padding: 12px;
+        padding: 13px;
+        min-height: 48px;
     }
 
     .result {
         font-size: 16px;
+        padding: 14px;
+    }
+
+    .units-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .unit-box {
+        padding: 12px 8px;
+    }
+
+    .unit-value {
+        font-size: 1.1em;
+    }
+
+    .unit-label {
+        font-size: 0.85em;
+    }
+
+    .conversion-title {
+        font-size: 1.05em;
+    }
+}
+
+/* iPhone SE, iPhone 12/13 mini - 375px */
+@media (max-width: 390px) {
+    .language-selection {
+        width: 92%;
+        padding: 1.2rem;
+    }
+
+    .welcome-text {
+        font-size: 1.35em;
+    }
+
+    .container {
+        width: 95%;
         padding: 12px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    .operation-selector,
+    .crop-selector {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    select, input {
+        padding: 9px 10px;
+        font-size: 16px;
+    }
+
+    .calculate-btn {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .units-grid {
+        gap: 8px;
+    }
+
+    .unit-box {
+        padding: 10px 6px;
+    }
+
+    .unit-value {
+        font-size: 1em;
+    }
+
+    .unit-label {
+        font-size: 0.8em;
+    }
+}
+
+/* Very small phones - iPhone SE 1st gen */
+@media (max-width: 360px) {
+    .welcome-text {
+        font-size: 1.25em;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    .lang-select-btn {
+        padding: 1rem;
+        font-size: 0.95em;
+    }
+
+    .container {
+        width: 96%;
+        padding: 10px;
+    }
+
+    .units-grid {
+        gap: 6px;
+    }
+
+    .unit-box {
+        padding: 8px 5px;
+    }
+}
+
+/* Handle notched iPhones - Safe area for iPhone X and later */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(10px, env(safe-area-inset-left));
+        padding-right: max(10px, env(safe-area-inset-right));
+    }
+
+    .container {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
+    }
+
+    .language-selection {
+        padding-left: max(1.5rem, env(safe-area-inset-left));
+        padding-right: max(1.5rem, env(safe-area-inset-right));
     }
 }
